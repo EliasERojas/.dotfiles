@@ -19,16 +19,22 @@ require("lazy").setup({
 	{"nvim-treesitter/nvim-treesitter", cmd = "TSUpdate" },
     -- completion
 	"saadparwaiz1/cmp_luasnip",
-	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-nvim-lsp",
 	"L3MON4D3/LuaSnip",
 	"rafamadriz/friendly-snippets",
 	"nvim-lua/plenary.nvim",
 	"jose-elias-alvarez/null-ls.nvim",
+    -- debug
 	"mfussenegger/nvim-dap",
+    -- packaging
 	{"williamboman/mason.nvim", cmd = "MasonUpdate"},
 	"williamboman/mason-lspconfig.nvim",
-    -- theme
-    "rebelot/kanagawa.nvim"
+    -- fzf
+    'junegunn/fzf.vim',
+    {'junegunn/fzf', build="./install --bin"},
+    -- completion
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/nvim-cmp',
 })

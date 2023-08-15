@@ -65,6 +65,7 @@ lspconfig.ccls.setup({
 			directory = ".ccls-cache",
 		},
 	},
+    filetypes = { "c", "cpp", "objc", "objcpp","h"}
 })
 
 lspconfig.phpactor.setup({
@@ -75,3 +76,28 @@ lspconfig.phpactor.setup({
 		["language_server_psalm.enabled"] = false,
 	},
 })
+
+-- angular
+local project_library_path = "/path/to/project/lib"
+local cmd = {"ngserver", "--stdio", "--tsProbeLocations", project_library_path , "--ngProbeLocations", project_library_path}
+
+lspconfig.angularls.setup{
+  cmd = cmd,
+  on_new_config = function(new_config,new_root_dir)
+    new_config.cmd = cmd
+  end,
+}
+
+local workspace_path = "/home/elo/Dev/java"
+local jdtls_binary = "/home/elo/.local/share/nvim/mason/bin/jdtls"
+local lombok_jar = "/home/elo/.local/share/nvim/mason/packages/jdtls/lombok.jar"
+local config_path = "/home/elo/.local/share/nvim/mason/packages/jdtls/config_linux/"
+local launcher = "/home/elo/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.500.v20230717-2134.jar"
+
+lspconfig.jdtls.setup{
+    cmd={   jdtls_binary, 
+            "-configuration", config_path, 
+            "-data", workspace_path,
+            "-jar", launcher
+        },
+}
