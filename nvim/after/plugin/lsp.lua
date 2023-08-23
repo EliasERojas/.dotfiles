@@ -88,16 +88,3 @@ lspconfig.angularls.setup{
   end,
 }
 
-local workspace_path = "/home/elo/Dev/java"
-local jdtls_binary = "/home/elo/.local/share/nvim/mason/bin/jdtls"
-local lombok_jar = "/home/elo/.local/share/nvim/mason/packages/jdtls/lombok.jar"
-local config_path = "/home/elo/.local/share/nvim/mason/packages/jdtls/config_linux/"
-local launcher = "/home/elo/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.500.v20230717-2134.jar"
-
-lspconfig.jdtls.setup{
-    cmd={   jdtls_binary, 
-            "-configuration", config_path, 
-            "-data", workspace_path,
-            "-jar", launcher
-        },
-}
