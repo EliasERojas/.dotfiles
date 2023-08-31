@@ -1,13 +1,10 @@
 local cmp = require("cmp")
-local luasnip = require("luasnip")
-require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
 	snippet = {
-		-- REQUIRED - you must specify a snippet engine
-		expand = function(args)
-			luasnip.lsp_expand(args.body) -- For `luasnip` users.
-		end,
+        expand = function(args)
+            require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        end,
 	},
 
 	mapping = cmp.mapping.preset.insert({
@@ -16,13 +13,13 @@ cmp.setup({
         ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
         ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 		["<C-e>"] = cmp.mapping.abort(),
-        ['<C-Space>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-	}),
+        ["<Tab>"] = cmp.mapping.confirm({ select = true })
+        }),
 
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" }, -- For luasnip users.
-		{ name = "buffer" },
+		{ name = "snippy" }, -- For luasnip users.
+        {{ name = "buffer" }},
 		{ name = "path" },
 	}),
 })
