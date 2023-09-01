@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader = ";" -- make sure to set `mapleader` before lazy so your mappings are correct
+vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 
 require("lazy").setup({
 	"neovim/nvim-lspconfig",
@@ -22,13 +22,11 @@ require("lazy").setup({
     -- debug
 	"mfussenegger/nvim-dap",
     -- packaging
-	{"williamboman/mason.nvim", cmd = "MasonUpdate"},
-	"williamboman/mason-lspconfig.nvim",
-    -- fzf
     'junegunn/fzf.vim',
     {'junegunn/fzf', build="./install --bin"},
     -- snippets
     'dcampos/nvim-snippy',
+    'honza/vim-snippets',
     -- autocompletion
     'dcampos/cmp-snippy',
     'hrsh7th/cmp-nvim-lsp',

@@ -13,7 +13,7 @@ cmp.setup({
         ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
         ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 		["<C-e>"] = cmp.mapping.abort(),
-        ["<Tab>"] = cmp.mapping.confirm({ select = true })
+        ["<C-Space>"] = cmp.mapping.confirm({ select = true })
         }),
 
 	sources = cmp.config.sources({
