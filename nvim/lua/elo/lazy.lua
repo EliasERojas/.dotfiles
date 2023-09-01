@@ -18,7 +18,6 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
     -- syntax 
 	{"nvim-treesitter/nvim-treesitter", cmd = "TSUpdate" },
-	"nvim-lua/plenary.nvim",
     -- debug
 	"mfussenegger/nvim-dap",
     -- packaging
