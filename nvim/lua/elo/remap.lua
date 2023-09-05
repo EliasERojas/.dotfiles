@@ -1,7 +1,5 @@
 local km = vim.keymap
 -- debug
-km.set("n", "<C-j>", "<cmd>bprevious<CR>")
-km.set("n", "<C-k>", "<cmd>bnext<CR>")
 km.set("n", "<leader>t", "<cmd>Lex<CR>")
 km.set("n", "<leader>ff", "<cmd>Files<CR>")
 km.set("n", "<leader>fg", "<cmd>Rg<CR>")

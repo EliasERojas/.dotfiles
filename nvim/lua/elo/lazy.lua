@@ -18,9 +18,7 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
     -- syntax 
 	{"nvim-treesitter/nvim-treesitter", cmd = "TSUpdate" },
-    -- debug
-	"mfussenegger/nvim-dap",
-    -- packaging
+    -- fuzzy find
     'junegunn/fzf.vim',
     {'junegunn/fzf', build="./install --bin"},
     -- snippets
@@ -30,5 +28,5 @@ require("lazy").setup({
     'dcampos/cmp-snippy',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/nvim-cmp',
-    'EdenEast/nightfox.nvim',
+    'rockerBOO/boo-colorscheme-nvim'
 })
