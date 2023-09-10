@@ -1,0 +1,59 @@
+##!/bin/bash
+BUILDS_DIR=0
+BSPWM_DIR=1
+SXHKD_DIR=2
+POD2MAN_BUILD=3
+LEMONBAR_BUILD=4
+
+must_be_dirs=("/.local/builds" "/.config/bspwm" "/.config/sxhkd" "/.local/builds/pod2man" "/.local/builds/lemonbar")
+bspwm_examples="/usr/share/doc/bspwm/examples"
+mbd_size=${#must_be_dirs[@]}
+curr_dir=$(pwd)
+actual_terminal="alacritty"
+default_terminal="urxvt"
+
+
+sudo pacman -Syu bspwm sxhkd dmenu
+
+#remember to pipe lemonbar_ex to "lemonbar -p"
+
+i=0
+while [ $i -lt $mbd_size ]; do
+    mbdir="$HOME${must_be_dirs[i]}"
+
+    if ! [ -d $mbdir ]; then
+        mkdir $mbdir
+    fi
+
+   case $i in
+        $BSPWM_DIR)
+            rc="/bspwmrc"
+            cp $bspwm_examples$rc $mbdir
+            install $bspwm_examples$rc $mbdir$rc
+            ;;
+        $SXHKD_DIR)
+            rc="/sxhkdrc"
+            rc_path=$mbdir$rc
+            rc_ex_path=$bspwm_examples$rc
+
+            cp $rc_ex_path $mbdir
+            install $rc_ex_path $rc_path
+            cat $curr_dir/sxhkd_keys >> $rc_path
+            sed -i -e "s/$default_terminal/$actual_terminal/g" $rc_path
+            ;;
+
+        $POD2MAN_BUILD)
+            cd $mbdir
+            git clone https://aur.archlinux.org/pod2man.git .
+            makepkg -i -s -c
+            cd $curr_dir
+            ;;
+        $LEMONBAR_BUILD)
+            cd $mbdir
+            git clone https://aur.archlinux.org/lemonbar-git.git .
+            makepkg -i -s -c
+            cd $curr_dir
+            ;;
+    esac 
+    ((i++))
+done
